@@ -37,35 +37,5 @@ public abstract class TemplateMethod {
     }
 
     public abstract int[] testMethod();
-    
-    public static class ToStringTest extends TemplateMethod {
-        public int[] testMethod() {
-            // {score, out of}
-            // correct answer generates 100 + max score
-            int[] result = {0,7};
-
-            AppointmentKey key = new AppointmentKey(new CalendarDate(1762, 9, 12),  new Employee("Yekaterina Alekseyevna"));
-            try {
-                Appointment student = new Appointment(key.getDate(), key.getEmployee());
-                String studentAnswer = student.toString().toUpperCase();
-                System.out.print("\t\t" + key + " | " + student);
-                if(studentAnswer.contains(key.getDate().toString().toUpperCase()) &&
-                studentAnswer.contains(key.getEmployee().getName().toUpperCase())) {
-                    result[0] = 105;
-                }
-                else if(studentAnswer.contains(key.getDate().toString().toUpperCase())) {
-                    result[0] = 3;
-                }
-                else if(studentAnswer.contains(key.getEmployee().getName().toUpperCase())) {
-                    result[0] = 3;
-                }
-            }
-            catch(Exception e) {
-                result[0] = 404;
-            }
-
-            return result;
-        }
-    }
 
 }

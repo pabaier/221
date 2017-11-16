@@ -46,7 +46,6 @@ public class Grader {
             // toString
             totalPoints[1] += toStringAptTest();
 
-            testTest();
         }
         catch (NoClassDefFoundError e) {
             System.out.println("\tCould not instantiate class Appointment");
@@ -133,7 +132,6 @@ public class Grader {
         }
         return points;
     }
-
 
     public static int getAppointmentTest(ArrayList<Appointment> studentList, AppointmentList studentAppointmentList, AppointmentListKey key) {
         System.out.println(TESTHEAD + "\tTesting getAppointment()" + RESET);
@@ -225,111 +223,27 @@ public class Grader {
     }
 
     // Appointment Class Tests
-    public static int testTest() {
-        TemplateMethod.toStringAptTest test = new TemplateMethod.toStringAptTest();
+    public static int toStringAptTest() {
+        HW4Tests.ToStringAptTest test = new HW4Tests.ToStringAptTest();
         int points = test.runTest("toString()"); 
         return points;
     }
 
-    public static int toStringAptTest() {
-        System.out.println(TESTHEAD + "\tTesting toString()" + RESET);
-        int points = 0;
-        int full = 3;
-        int half = 2;
-        AppointmentKey key = new AppointmentKey(new CalendarDate(1762, 9, 12),  new Employee("Yekaterina Alekseyevna"));
-        try {
-            Appointment student = new Appointment(key.getDate(), key.getEmployee());
-            String studentAnswer = student.toString().toUpperCase();
-            System.out.print("\t\t" + key + " | " + student);
-            if(studentAnswer.contains(key.getDate().toString().toUpperCase()) &&
-            studentAnswer.contains(key.getEmployee().getName().toUpperCase())) {
-                System.out.println(CORRECT + " - Correct - " + full + "/" + full + RESET);
-                points += full;
-            }
-            else if(studentAnswer.contains(key.getDate().toString().toUpperCase())) {
-                System.out.println(PARTCORRECT + " - Date Correct - " + half + "/" + full + RESET);
-                points += half;
-            }
-            else if(studentAnswer.contains(key.getEmployee().getName().toUpperCase())) {
-                System.out.println(PARTCORRECT + " - Name Correct - " + half + "/" + full + RESET);
-                points += half;
-            }
-            else {
-                System.out.println(PARTCORRECT + " - Incorrect - " + (half - 1) + "/" + full + RESET);
-                points += half - 1;                
-            }
-        }
-        catch(Exception e) {
-            System.out.println(INCORRECT + "\t\t" + e);
-            System.out.println("\t\tError running test - " + points + "/" + full + RESET);
-        }
-        return points;
-    }
-
     public static int getDateTest() {
-        System.out.println(TESTHEAD + "\tTesting getDate()" + RESET);
-        int points = 0;
-        int full = 3;
-        int half = 2;
-        AppointmentKey key = new AppointmentKey(new CalendarDate(2016, 2, 2),  new Employee("John"));
-        try {
-            Appointment student = new Appointment(key.getDate(), key.getEmployee());
-            System.out.print("\t\t" + key.getDate() + " | " + student.getDate());
-            if(student.getDate() == key.getDate()) {
-                System.out.println(CORRECT + " - Correct - " + full + "/" + full + RESET);
-                points += full;
-            }
-            else {
-                System.out.println(PARTCORRECT + " - Incorrect - " + half + "/" + full + RESET);
-                points += half;                
-            }
-        }
-        catch(Exception e) {
-            System.out.println(INCORRECT + "\t\t" + e);
-            System.out.println("\t\tError running test - " + points + "/" + full + RESET);
-        }
+        HW4Tests.GetDateTest test = new HW4Tests.GetDateTest();
+        int points = test.runTest("getDate()"); 
         return points;
     }
 
     public static int getEmployeeTest() {
-        System.out.println(TESTHEAD + "\tTesting getEmployee()"+ RESET);
-        int points = 0;
-        int full = 3;
-        int half = 2;
-        AppointmentKey key = new AppointmentKey(new CalendarDate(2016, 2, 2),  new Employee("John"));
-        try {
-            Appointment student = new Appointment(key.getDate(), key.getEmployee());
-            System.out.print("\t\t" + key.getEmployee() + " | " + student.getEmployee());
-            if(student.getEmployee() == key.getEmployee()) {
-                System.out.println(CORRECT + " - Correct - " + full + "/" + full + RESET);
-                points += full;
-            }
-            else {
-                System.out.println(PARTCORRECT + " - Incorrect - " + half + "/" + full + RESET);
-                points += half;                
-            }
-        }
-        catch(Exception e) {
-            System.out.println(INCORRECT + "\t\t" + e);
-            System.out.println("\t\tError running test - " + points + "/" + full + RESET);
-        }
+        HW4Tests.GetEmployeeTest test = new HW4Tests.GetEmployeeTest();
+        int points = test.runTest("getEmployee()"); 
         return points;
     }
 
     public static int apptConstructorTest() {
-        System.out.println(TESTHEAD + "\tTesting constructor" + RESET);
-        int points = 0;
-        int full = 1;
-        int half = 0;
-        try {
-            Appointment a = new Appointment(new CalendarDate(2016, 2, 2), new Employee("John"));
-            System.out.println(CORRECT + "\t\tCorrect - " + full + "/" + full + RESET);
-            points += full;
-        }
-        catch(Exception e) {
-            System.out.println(INCORRECT + "\t\t" + e);
-            System.out.println("\t\tError running test - " + points + "/" + full + RESET);
-        }
+        HW4Tests.ConstructorTest test = new HW4Tests.ConstructorTest();
+        int points = test.runTest("Constructor"); 
         return points;
     }
 
