@@ -226,9 +226,8 @@ public class Grader {
 
     // Appointment Class Tests
     public static int testTest() {
-        TemplateMethod.Q1 one = new TemplateMethod.Q1();
-        int points = one.runTest("***TESTMETHOD()***");
-        
+        TemplateMethod.toStringAptTest test = new TemplateMethod.toStringAptTest();
+        int points = test.runTest("toString()"); 
         return points;
     }
 
