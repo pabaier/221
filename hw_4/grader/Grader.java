@@ -31,20 +31,30 @@ public class Grader {
 
         System.out.println("Appointment Test:");
         try {
+            TemplateMethod[] allTests = {new HW4Tests.ConstructorTest(),
+                        new HW4Tests.GetEmployeeTest(),
+                        new HW4Tests.GetDateTest(),
+                        new HW4Tests.ToStringAptTest()
+            };
+            for(TemplateMethod test : allTests) {
+                totalPoints[1] = test.runTest();
+                if(totalPoints[1] == 0)
+                    throw new NoClassDefFoundError();
+            }
 
             // constructor
-            totalPoints[1] += apptConstructorTest();
-            if (totalPoints[1] == 0)
-                throw new NoClassDefFoundError();
+            // totalPoints[1] += apptConstructorTest();
+            // if (totalPoints[1] == 0)
+            //     throw new NoClassDefFoundError();
             
             // getEmployee
-            totalPoints[1] += getEmployeeTest();
+            // totalPoints[1] += getEmployeeTest();
 
             // getDate
-            totalPoints[1] += getDateTest();
+            // totalPoints[1] += getDateTest();
 
             // toString
-            totalPoints[1] += toStringAptTest();
+            // totalPoints[1] += toStringAptTest();
 
         }
         catch (NoClassDefFoundError e) {
@@ -221,7 +231,7 @@ public class Grader {
         }
         return points;
     }
-
+/*
     // Appointment Class Tests
     public static int toStringAptTest() {
         HW4Tests.ToStringAptTest test = new HW4Tests.ToStringAptTest();
@@ -247,6 +257,7 @@ public class Grader {
         return points;
     }
 
+*/
     public static int isAValidDateTest() {
         System.out.println(TESTHEAD + "\tTesting isValidDate()" + RESET);
         int points = 0;

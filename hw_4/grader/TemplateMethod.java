@@ -1,4 +1,11 @@
 public abstract class TemplateMethod {
+
+    private final String testName;
+
+    public TemplateMethod(String name) {
+        testName = name;
+    }
+
     public final String RESET = "\u001B[0m";
     public final String CORRECT = "\u001B[32m";
     public final String PARTCORRECT = "\u001B[34m";
@@ -13,7 +20,7 @@ public abstract class TemplateMethod {
     // public final String TESTHEAD = "";
     // public final String TESTEXPECT = "";
 
-    public int runTest(String testName) {
+    public int runTest() {
         System.out.println(TESTHEAD + "\t" + testName + RESET);
         int points = 0;
 
